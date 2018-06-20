@@ -1,0 +1,47 @@
+{% load static %}
+<html>
+    <body>
+        <h1>efarm</h1>
+            <p>
+                invoice no{{order.id}}<br>
+                <span class="date">{{ order.created|date:"M d, Y" }}</span>
+            </p>
+        <h2>bill to</h2>
+            <p>
+                name:{{order.first_name}} {{order.last_name}}
+                email:{{order.email}}
+                address:{{order.address}}
+                postal code:{{order.postal_code}},{{order.city}}
+            </p>
+        <h2>item bought</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>product</th>
+                            <th>price</th>
+                            <th>quantity</th>
+                            <th>cost</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in order.items.all %}
+                        <tr class='row{% cycle "1" "2" %}'>
+                            <td>{{item.product.name}}</td>
+                            <td class="num">{{item.price}}</td>
+                            <td class="num">{{item.quantity}}</td>
+                            <td class="num">{{item.get_cost}}</td>
+                        </tr>
+                    {% endfor %}
+                        <tr class="total">
+                        <td colspan="3">Total</td>
+                        <td class="num">ksh{{ order.get_total_cost }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+           <span class="{% if order.paid %}paid{% else %}pending{% endif %}">
+            {% if order.paid %}Paid{% else %}Pending payment{% endif %}
+            </span>
+    </body>
+</html>

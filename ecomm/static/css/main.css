@@ -1,0 +1,411 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+body{
+	margin: 0px 0px 0px 0px;
+	font-family:helvetica, sans-serif; 
+	height: 100%;
+}
+* {
+    box-sizing: border-box;
+}
+a {
+    text-decoration:none;
+    color:black;
+}
+
+.topheader{
+	margin: 0px;
+	height: auto;
+	overflow:auto;
+	background-color:#f0f5f5;
+    padding: 5px 5px 5px 5px
+    width: 100%;
+    font-size: 20px;
+
+}
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+/* Style the links inside the navigation bar */
+/*modal css*/
+ .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 10px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover,.dropdown:hover .dropbtn  {
+    background-color:#ddd;
+    color: black;
+}
+
+/* Add an active class to highlight the current page */
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+    display: none;
+}
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top :0px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+a:hover{
+	text-decoration-style: none;
+	color:#77b6e2;
+}
+.content{
+    margin-top:5px;
+    height: auto;
+    overflow: auto;
+    z-index:0px;
+}
+.btn{
+	background-color: #4CAF50;
+	border-radius: 3px;
+	align-content: center;
+}
+.detail {
+    text-align:justify;
+}
+.detail.image img {
+    width:100%;
+    padding:0 20px 20px 40px;
+}
+table {
+	margin-left:80px;
+    width:80%;
+    border-spacing:0;
+    border-collapse: collapse; 
+}
+
+table th, table td {
+    text-align:center;
+    font-size:14px;
+    padding:5px;
+    margin:0;
+}
+
+tbody tr:nth-child(odd) {
+    background:#efefef;
+}
+
+thead th, tbody tr.total {
+    background:#4CAF50;
+    color:white;
+    height: 50px;
+    font-weight:bold;
+}
+
+
+table.cart img {
+    width:150px;
+}
+
+tbody td.num {
+    text-align:right;
+}
+
+td input[type="submit"] {
+    font-size:12px;
+    padding:4px 10px;
+    background-color: #4CAF50;
+}
+}
+
+#sidebar{
+	width: 180px;
+	padding: 20px 20px 0 0;
+	float: left;
+	height: auto;
+}
+#sidebar ul{
+	margin: 0px;
+	padding: 0px;
+}
+#sidebar ul li{
+	margin: 0px;
+	list-style: none;
+	padding: 12px 13px;
+
+}
+#sidebar ul li a{
+	display: block;
+}
+footer{
+    border-top: 1px solid #ddd;
+	background-color:#f0f5f5;
+	 bottom: 0;
+     margin-top: 10px;
+	 height: auto;
+	 width: 100%;
+	 color: black;
+}
+footer h3{
+ font-size:20px;
+ font-weight:bold;
+ text-align:justify;
+}
+
+footer ul li{
+list-style:none;
+}
+footer .col-md-3{
+ align:center;
+}
+#main{
+	-webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+	display: flex;
+	padding: 0px;
+	height: auto;
+}
+
+#sidebar ul li.select {
+    background:#4CAF50;
+    border-radius:4px;
+}
+
+#sidebar ul li.select a {
+    color:#5993bb;
+}
+
+.product .item {
+    width:20%;
+    text-align:justify center;
+    line-height:1.5;    
+    align-content: center;
+    margin: 6px;
+    box-shadow: 0px 0px 0px grey;
+    -webkit-transition:box-shadow .6s ease-out;
+    box-shadow: .9px .10px 3px grey;
+}
+.product .item .item_list{
+    padding:0px 10px 10px 10px;
+}
+.product.item:hover {
+ border: 1px solid #777;
+ background-color: black;
+}
+.product .item img {
+    width:100%;
+    margin-bottom:5px;
+    height: auto;
+   
+}
+/*css for order accordion */
+
+.accordion {
+    background-color: #66ff66;
+    color:white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius:5px;
+    outline: none;
+    transition: 0.4s;
+    margin-top:5px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active{
+background-color: #4CAF50;
+}
+ .accordion:hover {
+    background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 28px;
+    background-color: #f5f5f0;
+    display: none;
+    overflow: hidden;
+}
+
+/* media queries css */
+@media only screen and ( max-width: 800px){
+	/*for tablets*/
+table {
+	margin:0px;
+    width:80%;
+    border-spacing:0;
+    border-collapse: collapse; 
+}
+
+#main{
+		width: 60%;
+		padding: 0px;
+		margin-bottom: 5px;
+}
+.product.item img {
+ width:25%;
+ line-height:1.2;
+}
+#sidebar{
+	width: 30%;
+	padding: 0;
+	margin: 0;
+}
+.product .item {
+    width:100%;
+    
+    float:left;
+    text-align:center;
+    line-height:1.2;
+    border: 2px solid black;
+    overflow: auto;
+}
+.item3{
+	width: 100%;
+	margin-top: 120px;
+}
+footer{
+	width: 100%;
+	overflow: auto;
+}
+}
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+@media only screen and (max-width: 400px){
+	/*for mobile phones*/
+
+	table.cart{
+	width: 100%;
+	margin: 0;
+	
+}
+.product.item img {
+    width:100%;
+    line-height:1.2;
+}
+.product .item {
+    width:100%;
+    padding:10px 20px 10px 0;
+    text-align:center;
+    line-height:1.2;
+    overflow: auto;
+    box-shadow: 0px 0px 0px grey;
+    -webkit-transition:box-shadow .6s ease-out;
+    box-shadow: .9px .10px 3px grey;
+}
+
+footer{
+
+    width: 100%;
+	overflow: auto;
+	clear: both;
+}
+a.button.light{
+	background-color:#99FF66;
+}}
+/*this is the css for the
+forum part of the project*/
+
+

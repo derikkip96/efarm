@@ -1,0 +1,73 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+{% if category %}{{ category.name }}{% else %}Products{% endif %}{% endblock %}
+
+{% block content %}
+
+ {% for message in messages %}
+<div id="message" style="background-color:#99ff99;padding:5px;margin-left:50px;margin-right:50px;color:white;font-weight:bold;">
+    <div class="{{ message.tags }}">
+
+
+        {% if 'safe' in message.tags %}
+            <center>{{ message|safe }}</center><a class="close"> ✖</a>
+        {% else %}
+            <center>{{ message }}</center>
+        {% endif %}
+    </div>
+</div>
+    {% endfor %}
+
+<div class="">
+<div id="sidebar" class="col-lg-3 col-md-2 col-sm-0">
+	<div>
+				<form action="/search" method="get" class="autocomplete-me">
+					<input name="q" type="text" type="text" id="id_q"  />
+					<input type="submit" value="search"  />
+
+				</form>
+			</div>
+			<h3>Categories</h3>
+
+
+			<ul>
+				<li {% if not category %} class="select"{% endif %}><a href="{% url "product_list" %}">All</a></li>
+			{% for c in categories %}
+				<li {% if category.slug == c.slug %}class="select"{% endif %}><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+			{% endfor %}
+			</ul>
+</div>
+
+<h1>{% if category %} {{ category.name }}{% else %}Products{% endif %}</h1>
+<div id="main" class="product col-sm-12 col-md-9 col-lg-9" >
+		{% include "shop/pagination.html" with page=products %}
+			{% for product in products %}
+			<div class="item">
+					<a href="{{ product.get_absolute_url }}">
+					<img src="{%if product.image %}{{product.image.url}}{% else %}{% static 'img/image.png'%}{% endif %}">
+					</a>
+					<div class="item_list">
+					name:<a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+					
+					Weight: {{product.weigth}}kg<br>
+					price: ${{ product.price }}<br>
+					Location: {{product.location}}<br>
+					
+				</div>
+
+			</div>
+
+			{% endfor %}
+</div>
+</div>
+<script type="text/javascript">
+
+  var close = document.getElementsByClassName("close");
+  close.onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+    }
+
+</script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block content %}
+<h2>Search</h2>
+
+
+
+
+    {% if query %}
+      <h3>Results for your search</h3><hr>
+      {% for result in page.object_list %}
+        <p>
+          click to view results <a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>
+        </p>
+    {% empty %}
+      <p>No results found.</p>
+    {% endfor %}
+   {% endif %}
+
+{% endblock %}

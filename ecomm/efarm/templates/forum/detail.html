@@ -1,0 +1,56 @@
+{% extends "shop/base.html" %}
+{% block title %}post details{% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+<style>
+    .pst{
+        margin:5px;
+        border:1px ;
+        border-radius:5px;
+        box-shadow: 0px 0px 0px grey;
+        -webkit-transition:box-shadow .6s ease-out;
+        box-shadow: .10px .10px 10px grey;
+        padding:20px;
+    }
+    .input{
+        width:300px;
+        height:auto;
+    }
+</style>
+<div class="col-md-3"></div>
+<div class="col-md-7 col-sm-12 col-xs-12 ">
+
+     <div class="pst">
+
+            <div style="font-weight:bold; font-size:20px;"><center>{{ post.title }}</center><br></div>
+              <small><div class="dat"  >{{ post.date }}</div></small>
+                    {% if post.image %}
+                    <img src="{{post.image.url}} " style="height:auto;width:580px" class="img-responsive">
+                    {% endif %}
+                {{post.Description|linebreaks|safe }}
+                <a href="{% url 'postview' %}">back</a><br><br>
+                <div style="float:right; padding-right:15px; color:#5993bb;">{% with post.likes.count as total_likes %}{{ total_likes}}<a href="{{post.get_post_like_url}}"> <span class="glyphicon glyphicon-thumbs-up"  ></span> like{{total_likes|pluralize}}{% endwith %}</a>
+                </div>
+             <div style="color:#5993bb;">{% with comments.count as total_comments %}
+                 {{ total_comments }} <span class="glyphicon glyphicon-envelope"></span> comment{{ total_comments|pluralize }}
+                {% endwith %}</div>
+         <div><br>
+             <form method="POST" action=".">
+                 {% csrf_token %}
+                 {{Comment_form|crispy }}
+                 <input type="submit" value="comment" class="btn btn-default">
+             </form>
+             <br>
+
+
+         </div>
+                {% for comment in comments %}
+                {{ comment.body }}<br>
+                <small style="color:grey;">{{ comment.user }} {{comment.created|timesince}} ago<br></small>
+                {% endfor %}
+
+
+        </div>
+
+</div>
+{% endblock%}

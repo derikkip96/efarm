@@ -1,0 +1,12 @@
+<div class="order-info">
+<h3>Your order</h3>
+<ul>
+{% for item in cart %}
+<li>
+{{ item.quantity }}x {{ item.product.name }}
+<span>${{ item.total_price }}</span>
+</li>
+{% endfor %}
+</ul>
+<p>Total: ksh{{ cart.get_the_total_cost }}</p>
+</div>

@@ -1,0 +1,85 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script
+			  src="https://code.jquery.com/jquery-3.3.1.js"
+			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+			  crossorigin="anonymous">
+
+	</script>
+
+
+
+{% block content %}
+<style>
+body{
+	background-color:grey;
+}
+.cont{
+		margin-top:175px;
+		border-radius:5px;
+        box-shadow: 0px 0px 0px grey;
+        -webkit-transition:box-shadow .6s ease-out;
+        box-shadow: .10px .10px 10px grey;
+        padding:20px 20px 20px 80px;
+        background-color:white;
+}
+.btn{
+	width:200px;
+	background-color:#4CAF50;
+	color:white;
+}
+.form-control{
+width:200px;
+}
+#message{
+border:1px;
+padding:15px;
+width:300px;
+background-color:#e60000;
+}
+#message li{
+ list-style:none;
+}
+</style>
+<div class="container">
+	<div class="row">
+	<div class="col-md-3 col-sm-0 xsm-1"></div>
+		<div class="col-md-7 col-sm-12 xsm-11 cont">
+			{%if messages %}
+			<div id="message">
+			{% for message in messages %}
+			<li class="{{message.tags}}">
+				{{message|safe}}
+				<a class="close"> ✖</a>
+			</li>
+			{% endfor%}
+			</div>
+			{% endif %}
+		<p>Please, use the following form to log-in:</p><hr>
+
+
+			<form action="." method="post">
+				{% csrf_token %}
+				{{form|crispy}}<br>
+
+		<input type="submit" name="submit" value="login" class="btn">
+			</form>
+			already have an account? if not please <a href="{% url 'register' %}">Signup</a> with us
+				<hr>
+				<a href="{% url 'reset1' %}">forgot password?</a>
+				<a href="{% url 'change' %}" class="pull-right">change password</a>
+		</div>
+			<div class="col-md-2 col-sm-0 xsm-1 "></div>
+</div>
+
+</div>
+<script>
+var message = document.getElementById('message');
+var btn=document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+    message.style.display = "none";
+}
+</script>
+{% endblock %}

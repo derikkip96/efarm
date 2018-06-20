@@ -1,0 +1,41 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+{% if category %}{{ category.name }}{% else %}Products{% endif %}{% endblock %}
+
+{% block content %}
+<div id="sidebar" class="col-lg-3 col-md-2 col-sm-0">
+			<h3>Categories</h3>
+
+
+			<ul>
+				<li {% if not category %} class="select"{% endif %}><a href="{% url 'hire_list' %}">All</a></li>
+			{% for c in categories %}
+				<li {% if category.slug == c.slug %}class="select"{% endif %}><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+			{% endfor %}
+			</ul>
+</div>
+
+<h1>{% if category %} {{ category.name }}{% else %}Products{% endif %}</h1>
+<div id="main" class="product col-sm-12 col-md-9 col-lg-9" >
+			{% for input in inputs %}
+			<div class="item">
+					<a href="{{ input.get_absolute_url }}">
+					<img src="{%if input.image %}{{input.image.url}}{% else %}{% static 'img/image.png'%}{% endif %}">
+					</a>
+					<div class="item_list">
+					name:<a href="{{ input.get_absolute_url }}">{{ input.name }}</a><br>
+
+					Weight: {{input.weigth}}kg<br>
+					price: ${{ input.price }}<br>
+					Location: {{input.location}}<br>
+						<a href="#"><button>hire</button></a>
+
+				</div>
+
+			</div>
+
+			{% endfor %}
+</div>
+</div>
+{% endblock %}
