@@ -40,11 +40,18 @@ class Post(models.Model):
         return reverse('post_details', args=[self.id ])
     def get_post_like_url(self):
         return reverse('postlike',args=[self.id])
+    def get_post_like_api(self):
+        return reverse('postlikeapi',args=[self.id])
 
 class Question(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,default=1,on_delete=models.CASCADE)
     ask_question =models.TextField()
     asked = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def get_content_type(self):
+        content_type= ContentType.objects.get_for_model(Question)
+        return content_type
 
     class Meta:
         ordering =('asked',)
@@ -52,8 +59,8 @@ class Question(models.Model):
 
     def __str__(self):
         return self.user.username
-    def get_absolute_url(self):
-        return  reverse('question',args=[self.id])
+    def get_url(self):
+        return  reverse('quest', args=[self.id])
 
 
 
@@ -65,5 +72,7 @@ class Answer(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
 
     date =models.DateTimeField(auto_now_add=True)
-    text = models.TextField()
+    body = models.TextField()
+
+
 

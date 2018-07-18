@@ -12,6 +12,6 @@ class QuestionAdmin(admin.ModelAdmin):
     list_filter = ['asked']
 admin.site.register(Question,QuestionAdmin)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ['user', 'text','date']
+    list_display = ['user', 'body','date']
     list_filter = ['date']
 admin.site.register(Answer,AnswerAdmin)

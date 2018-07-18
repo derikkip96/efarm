@@ -34,7 +34,9 @@
              <div style="color:#5993bb;">{% with comments.count as total_comments %}
                  {{ total_comments }} <span class="glyphicon glyphicon-envelope"></span> comment{{ total_comments|pluralize }}
                 {% endwith %}</div>
-         <div><br>
+         <div>
+
+             <br>
              <form method="POST" action=".">
                  {% csrf_token %}
                  {{Comment_form|crispy }}

@@ -1,0 +1,50 @@
+{% extends "shop/base.html" %}
+<title>{% block title %} qestion details{% endblock %}</title>
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block content %}
+<style>
+    .pst{
+        margin:5px;
+        border:1px ;
+        border-radius:5px;
+        box-shadow: 0px 0px 0px grey;
+        -webkit-transition:box-shadow .6s ease-out;
+        box-shadow: .10px .10px 10px grey;
+        padding:20px;
+    }
+    .input{
+        width:300px;
+        height:auto;
+    }
+</style>
+<div class="col-md-3"></div>
+<div class="col-md-7 col-sm-12 col-xs-12 ">
+
+     <div class="pst">
+
+         <small><div class="dat"  >{{ question.asked }}</div></small>
+                {{question.ask_question }}
+         <br>
+            {% for answer in answers %}
+                <div style="color:#5993bb;">{{ answer.body }} </div>
+                <small style="color:grey;">answered by {{ answer.user }} {{answer.date|timesince}} ago<br></small>
+            {% endfor %}
+         <div><br>
+             <form method="POST" action=".">
+                 {% csrf_token %}
+                 {{A_form|crispy }}
+                 <input type="submit" value="give your answer" class="btn btn-default">
+             </form>
+             <br>
+
+
+         </div>
+
+
+
+        </div>
+
+</div>
+
+{% endblock %}

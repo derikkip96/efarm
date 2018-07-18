@@ -10,25 +10,18 @@
         <div class="col-md-6 " >
 <button class="accordion"><span class="glyphicon glyphicon-menu-up"></span> YOUR ORDER</button>
     <div class="panel collapse in " id="order">
-        <form action="." method="post" class="order-form" novalidate>
+
+        <form action="." method="post" class="order-form" novalidate class="form-inline">
+
   {% csrf_token %}
 
-  {{ order_form.non_field_errors }}
-
-    {% for field in order_form.visible_fields %}
-    <div class="form-group">
-      {{ field.label_tag }}
-      {{ field}}
-      {% if field.help_text %}
-        <small class="form-text text-muted">{{ field.help_text }}</small>
-      {% endif %}
-    </div>
-  {% endfor %}
+  {{order_form|crispy}}
 			<br>
             <p><input type="submit" value="Place Order" id="orderButton"></p>
 
-
+			</>
         </form>
+
     </div>
 
 <button class="accordion"><span class="glyphicon glyphicon-menu-down"> ORDER SUMMARY</button>

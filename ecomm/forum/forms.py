@@ -10,7 +10,7 @@ class AnswerForm(forms.ModelForm):
 
     class Meta:
         model=Answer
-        fields=('text',)
+        fields=('body',)
         widgets={
-            'text':forms.Textarea(attrs={'class':'form','placeholder':'answer here'})
+            'body':forms.Textarea(attrs={'class':'form','placeholder':'answer here'})
         }

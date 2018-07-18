@@ -77,22 +77,11 @@
     <div class="que">
 <center><h2>asked question<hr></h2></center>
         {%  for question in questions %}
-         {{question.ask_question}}
-        <center><a>show answers</a></center><br>
+         {{question.ask_question}}<br><br>
+        <a href="{{question.get_url}}">answer</a><br>
         {% endfor %}
     </div>
 
 </div>
-<script type="text/javascript">
-    $('#post-form').on('submit', function(event){
-    event.preventDefault();
-     console.log("create working!")
-     
-    function create_post() {
-    console.log("create post is working!") // sanity check
-    };
-});
-
-</script>
 
 {% endblock %}
