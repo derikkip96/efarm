@@ -1,0 +1,8 @@
+Include
+Lib
+myproj
+Scripts
+tcl
+.idea
+pip-selfcheck.json
+*.pyc
