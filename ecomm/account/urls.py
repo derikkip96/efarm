@@ -11,7 +11,7 @@ from django.contrib.auth.views import (
 
 urlpatterns =[
 			url(r'register/$',views.userRegistration, name='register'),
-			url(r'profile/$',views.editProfile, name='editProfile'),
+			url(r'profile/edit/$',views.editProfile, name='editProfile'),
 			url(r'login/$', views.loginView, name='logint'),
 			url(r'logout/$', auth_views.logout, name='logout'),
 			url(r'^password_change/$',views.PasswordChange, name='change'),
@@ -28,6 +28,7 @@ urlpatterns =[
 			url(r'^reset/done/$',
 				PasswordResetCompleteView.as_view(template_name='regist/password_reset_complete.html'),
 				name='password_reset_complete'),
+			url(r'^profile/$',views.profileView, name='profilet')
 
 
 

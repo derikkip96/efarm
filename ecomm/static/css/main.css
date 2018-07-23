@@ -4,6 +4,66 @@ body{
 	font-family:helvetica, sans-serif; 
 	height: 100%;
 }
+/*for hire detail*/
+
+
+/*css for the blog*/
+.pst{
+        margin:5px;
+        border:1px ;
+        border-radius:5px;
+        box-shadow: 0px 0px 0px grey;
+        -webkit-transition:box-shadow .6s ease-out;
+        box-shadow: .10px .10px 10px grey;
+        padding:20px;
+    }
+    .dat{
+        color:grey
+    }
+    .que{
+        margin:10px;
+        border:1px ;
+        border-radius:5px;
+        box-shadow: 0px 0px 0px grey;
+        -webkit-transition:box-shadow .6s ease-out;
+        box-shadow: .10px .10px 10px grey;
+        padding:20px;
+    }
+    .input{
+    width:350px;
+    height:100px;
+    border-radius:8px;
+    }
+    /*end of the stylesheet*/
+/*this is the css for the
+profile part of the project*/
+.posty{
+        margin:3 5 0 5;
+        border:1px ;
+        border-radius:5px;
+        box-shadow: 0px 0px 0px grey;
+        -webkit-transition:box-shadow .6s ease-out;
+        box-shadow: .10px .10px 10px grey;
+        padding:20px;
+}
+.psty{
+padding:10px;
+
+}
+.edit{
+        border:1px solid grey ;
+        border-radius:5px;
+        padding:20px;
+
+}
+.pic{
+ margin-top:50px;
+}
+
+/*end of the style*/
+
+
+
 * {
     box-sizing: border-box;
 }
@@ -405,7 +465,3 @@ footer{
 a.button.light{
 	background-color:#99FF66;
 }}
-/*this is the css for the
-forum part of the project*/
-
-

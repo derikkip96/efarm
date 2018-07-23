@@ -1,10 +1,75 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 body{
 	margin: 0px 0px 0px 0px;
-	padding: 2px 2px 2px 2px;
 	font-family:helvetica, sans-serif; 
 	height: 100%;
 }
+/*for hire detail*/
+.cnt{
+ margin:0 5 0 5;
+ background-color:black;
+}
+.imgy{
+ padding-top:50px;
+}
+
+/*css for the blog*/
+.pst{
+        margin:5px;
+        border:1px ;
+        border-radius:5px;
+        box-shadow: 0px 0px 0px grey;
+        -webkit-transition:box-shadow .6s ease-out;
+        box-shadow: .10px .10px 10px grey;
+        padding:20px;
+    }
+    .dat{
+        color:grey
+    }
+    .que{
+        margin:10px;
+        border:1px ;
+        border-radius:5px;
+        box-shadow: 0px 0px 0px grey;
+        -webkit-transition:box-shadow .6s ease-out;
+        box-shadow: .10px .10px 10px grey;
+        padding:20px;
+    }
+    .input{
+    width:350px;
+    height:100px;
+    border-radius:8px;
+    }
+    /*end of the stylesheet*/
+/*this is the css for the
+profile part of the project*/
+.posty{
+        margin:3 5 0 5;
+        border:1px ;
+        border-radius:5px;
+        box-shadow: 0px 0px 0px grey;
+        -webkit-transition:box-shadow .6s ease-out;
+        box-shadow: .10px .10px 10px grey;
+        padding:20px;
+}
+.psty{
+padding:10px;
+
+}
+.edit{
+        border:1px solid grey ;
+        border-radius:5px;
+        padding:20px;
+
+}
+.pic{
+ margin-top:50px;
+}
+
+/*end of the style*/
+
+
+
 * {
     box-sizing: border-box;
 }
@@ -12,6 +77,7 @@ a {
     text-decoration:none;
     color:black;
 }
+
 .topheader{
 	margin: 0px;
 	height: auto;
@@ -26,8 +92,45 @@ a {
     background-color: #333;
     overflow: hidden;
 }
-
 /* Style the links inside the navigation bar */
+/*modal css*/
+ .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 10px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .topnav a {
     float: left;
     display: block;
@@ -161,8 +264,8 @@ td input[type="submit"] {
 }
 
 #sidebar{
-	width: 200px;
-	padding: 30px 20px 0 0;
+	width: 180px;
+	padding: 20px 20px 0 0;
 	float: left;
 	height: auto;
 }
@@ -181,10 +284,10 @@ td input[type="submit"] {
 }
 footer{
     border-top: 1px solid #ddd;
-	background-color: #f0f5f5;
+	background-color:#f0f5f5;
 	 bottom: 0;
      margin-top: 10px;
-	 height: 200px;
+	 height: auto;
 	 width: 100%;
 	 color: black;
 }
@@ -270,13 +373,6 @@ background-color: #4CAF50;
     background-color: #f5f5f0;
     display: none;
     overflow: hidden;
-}
-/*style sheet for the forum part of the application*/
-.post.pst{
-margin:5px;
-border:1px solid black;
-border-radius:5px;
-padding:5px;
 }
 
 /* media queries css */
@@ -367,15 +463,11 @@ footer{
 }
 
 footer{
-	background-color: red;
-	width: 100%;
+
+    width: 100%;
 	overflow: auto;
 	clear: both;
 }
 a.button.light{
 	background-color:#99FF66;
 }}
-/*this is the css for the
-forum part of the project*/
-
-

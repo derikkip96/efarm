@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from . models import Input,Category
+# from cabook.forms import HireForm
 
 # Create your views here.
 def hireView(request,category_slug=None):
@@ -18,4 +19,4 @@ def input_detail(request,id, slug):
                             id=id,
                             slug=slug
                             )
-    return  render(request,'hire/hire_detail.html',{ 'input':input })
+    return  render(request,'hire/hire_detail.html',{ 'input':input})

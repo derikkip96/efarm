@@ -1,0 +1,46 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}hire detail{% endblock %}
+
+{% block content %}
+<style>
+    .cnt{
+ margin:0 4 0 4;
+
+}
+.imgy{
+ padding-top:50px;
+}
+</style>
+
+<div class="cnt container">
+    <div class="row">
+        <div class="imgy col-md-4 col-sm-12 col-xsm-12">
+        <img src="{%if input.image %}{{input.image.url}}{% else %}{% static 'img/image.png'%}{% endif %}" height="200" width="auto" class="img-thumbnail">
+        </div>
+        <div class="col-md-6 col-sm-12 col-xsm-12">
+
+
+                    <h3>General information<hr></h3>
+					name:<a href="{% url 'hire_list' %}">{{ input.name }}</a><br>
+
+					Weight: {{input.weigth}}kg<br>
+					price: KSH{{ input.price }}<br>
+					Location: {{input.location}}<br>
+                    <h3>Description<hr></h3>
+                    {{input.description|linebreaks}}
+            <br>
+            <div class="bookd">
+                <form action="{% url 'hire' input.id %}" method="post">
+                    {% csrf_token %}
+						<input type="submit" value="book now" style="background-color:#00cc55; border-radius: 4px; border-style: none; ">
+					</form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

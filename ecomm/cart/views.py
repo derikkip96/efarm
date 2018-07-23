@@ -7,6 +7,7 @@ from .cart import Cart
 from coupons.forms import CouponForm
 from django.contrib import messages
 from django.urls import reverse
+
 def add_cart(request,product_id):
 	cart = Cart(request)
 	product = get_object_or_404(Product,id=product_id)

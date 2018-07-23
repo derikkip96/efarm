@@ -4,6 +4,7 @@
 {% if category %}{{ category.name }}{% else %}Products{% endif %}{% endblock %}
 
 {% block content %}
+<div id="content">
 
  {% for message in messages %}
 <div id="message" style="background-color:#99ff99;padding:5px;margin-left:50px;margin-right:50px;color:white;font-weight:bold;">
@@ -41,26 +42,32 @@
 
 <h1>{% if category %} {{ category.name }}{% else %}Products{% endif %}</h1>
 <div id="main" class="product col-sm-12 col-md-9 col-lg-9" >
-		{% include "shop/pagination.html" with page=products %}
+
 			{% for product in products %}
 			<div class="item">
 					<a href="{{ product.get_absolute_url }}">
-					<img src="{%if product.image %}{{product.image.url}}{% else %}{% static 'img/image.png'%}{% endif %}">
+					<img src="{%if product.image %}{{product.image.url}}{% else %}{% static 'img/image.png' %}{% endif %}">
 					</a>
 					<div class="item_list">
-					name:<a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+					    <b>name:</b><a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
 					
-					Weight: {{product.weigth}}kg<br>
-					price: ${{ product.price }}<br>
-					Location: {{product.location}}<br>
+						<b>Weight:</b>  {{product.weigth}}kg<br>
+						<b>price:</b>  KSH{{ product.price }}<br>
+						<b>Location:</b>  {{product.location}}<br>
 					
 				</div>
 
 			</div>
 
 			{% endfor %}
+
+    <div class="col-md-9 pull-left">
+        {% include "shop/pagination.html" with page=products %}
+    </div>
 </div>
 </div>
+	<!--getting contenct to be displayed by the ajax request-->
+	</div>
 <script type="text/javascript">
 
   var close = document.getElementsByClassName("close");
@@ -70,4 +77,5 @@
     }
 
 </script>
+
 {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}book detail{% endblock %}
+
+{% block content %}
+<div class="container">
+<center><h1>Your bookings<hr></h1></center>
+<table class="book">
+	<thead>
+			<tr>
+				<th colspan="3">Image</th>
+				<th >Product</th>
+				<th>Price</th>
+			</tr>
+	</thead>
+<tbody>
+{% for item in booky  %}
+{% with item.input as input  %}
+		<tr>
+			<td colspan="3">
+				<img src="{% if input.image %}{{ input.image.url}}{% else %}{% static "img/no_image.png" %}{% endif %}" height="auto" width="150px" >
+			</td>
+				<td>{{ input.name }} <br><a href="{% url 'cancel_book' input.id %}">cancell booking</a>
+					</td>
+				<td class="num"><center>ksh{{ item.price }}</center></td>
+		</tr>
+{% endwith %}
+{% empty %}
+
+		<td colspan="7">you dont have any bookings</td>
+{% endfor %}
+		<tr class="total">
+				<td>Total</td>
+				<td colspan="3"></td>
+			<td class="num"><center>ksh {{ book.get_total_cost }}</center></td>
+		</tr>
+
+</tbody>
+</table>
+	<hr>
+	<center><a class="btn btn-default" href="{% url 'BookView' %}">hire how</a> </center>
+</div>
+{% endblock %}

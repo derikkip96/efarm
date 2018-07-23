@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.timezone import now as timezone_now
 import os
+from django.urls import reverse
 
 # Create your models here.
 def upload(instance,filename):
@@ -15,3 +16,5 @@ class Profile(models.Model):
 
 	def __str__(self):
 		return 'profile for{}'.format(self.user.username)
+	def get_abs_url(self):
+		return reverse('profile',args=[self.id])

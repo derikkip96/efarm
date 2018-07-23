@@ -1,16 +1,44 @@
 {% extends 'shop/base.html' %}
 {% load static %}
-
+<link rel="stylesheet" href="{% static 'css/profile.css' %}"/>
 {% block content %}
-<div class="row">
-   <div  class=" post col-md-7 col-sm-9 col-xs-12">
-    <div class="pst">
 
+
+
+   <div  class="container posty">
+    <div class="row psty">
+        <div class="pic col-md-4 col-sm-12">
+            {% if user.profile.image  %}
+              <img src="{{ user.profile.image.url }}" height="250px" width="auto" class="img-thumbnail">
+            {% else %}
+              <img src="{% static 'img/image.png'%}" height="250px" width="auto" class="img-thumbnail">
+            {% endif %}
+
+        </div>
+        <div class="col-md-5 col-sm-12">
+            <h3>Contact Infomation<hr></h3>
+            <b>Email:</b> {{user.email}}<br>
+            <br><br>
+            <h3>General Information<hr></h3>
+            <b>Name:</b> {{ user.first_name }} {{user.last_name}}<br>
+            <b>Username:</b> {{user.username}}<br>
+            <b>Date of Birth: {{user.profile.date_of_birth}}</b>
+            <br><br>
+
+        </div>
+        <div class="col-md-3 col-sm-12">
+            <div class="edit">
+                <h3>Actions</h3>
+                <a href="{% url 'change' %}"><span class="glyphicon glyphicon-pencil"> Change Password </span></a>
+                <a href="{% url 'editProfile' %}"><span class="glyphicon glyphicon-pencil"> edit profile </span></a>
+
+            </div>
 
         </div>
 
 
 </div>
    </div>
-</div>
+
+
 {% endblock %}

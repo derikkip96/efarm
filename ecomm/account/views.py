@@ -17,7 +17,7 @@ from . forms import(
 def loginView(request):
 	if request.method =='POST':
 		form = LoginForm(request.POST)
-		if form.is_valid():
+		if form.is_valid() and request.is_ajax:
 			cd=form.cleaned_data
 			user = authenticate(username=cd['username'],password=cd['password'])
 			if user is not None:
@@ -51,26 +51,29 @@ def userRegistration (request):
 @login_required
 def editProfile(request):
 	if request.method == 'POST':
-		reg_form = UserEditForm(instance=request.user, data=request.POST)
-		prof_form = ProfileEditForm(instance=request.user.profile, data=request.POST)
+		reg_form = UserEditForm(instance=request.user, data=request.POST )
+		prof_form = ProfileEditForm(instance=request.user.profile, data=request.POST,files=request.FILES)
 		if reg_form and prof_form.is_valid():
 			reg_form.save()
 			prof_form.save()
 	else:
 		reg_form =UserEditForm(instance=request.user)
-		prof_form = ProfileEditForm()
+		prof_form = ProfileEditForm(instance=request.user.profile)
 	return render(request,'shop/account/editProfile.html',{'reg_form':reg_form,'prof_form':prof_form})
 # view to change password
 
 def PasswordChange(request):
 	if request.method == 'POST':
-		form = PasswordChangeForm(request.user, data=request.POST)
-		if form.is_valid():
-			user=form.save()
+		p_form = PasswordChangeForm(request.user, data=request.POST)
+		if p_form.is_valid():
+			user=p_form.save()
 			update_session_auth_hash(request,user)
 			messages.success(request,'password changed successfully')
 		else:
 			messages.error(request,'password cannot be cahnged')
 	else:
-		form= PasswordChangeForm(request.user)
-	return render(request,'regist/change-password.html',{'form':form})
+		p_form= PasswordChangeForm(request.user)
+	return render(request,'regist/change-password.html',{'p_form':p_form})
+def profileView(request):
+	profile=Profile.objects.all()
+	return render(request,'shop/account/profile.html',{'profile':profile})

@@ -31,7 +31,7 @@ def orderView(request):
 			request.session['order_id']= order.id
 			return redirect(reverse('process'))
 	else:
-		order_form = OrderForm()
+		order_form = OrderForm(instance=request.user)
 	return render(request,'orders/order/create.html',{'cart':cart,'order_form':order_form})
 @staff_member_required
 def order_detail(request,order_id):

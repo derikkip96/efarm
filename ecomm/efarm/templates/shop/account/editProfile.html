@@ -1,0 +1,60 @@
+{% extends "shop/base.html" %}
+{% load static %}
+<title>{% block title %}order{% endblock %}</title>
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+
+.cont{
+		margin:0 5 0 5;
+		border-radius:5px;
+        box-shadow: 0px 0px 0px grey;
+        -webkit-transition:box-shadow .6s ease-out;
+        box-shadow: .10px .10px 10px grey;
+        padding:20px 20px 20px 80px;
+        background-color:white;
+}
+.btn{
+	width:200px;
+	background-color:#4CAF50;
+	color:white;
+}
+.form-control{
+width:200px;
+}
+#message{
+border:1px;
+padding:15px;
+width:300px;
+background-color:#e60000;
+}
+#message li{
+ list-style:none;
+}
+</style>
+<div class="container">
+	<div class="row">
+	<div class="col-md-3 col-sm-0 xsm-1"></div>
+		<p>edit your profile:</p><hr>
+
+
+			<form action="." method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{reg_form|crispy}}
+                {{prof_form|crispy}}
+                <br>
+
+		<input type="submit" name="profile" value="edit profile" class="btn">
+			</form>
+			already have an account? if not please <a href="{% url 'register' %}">Signup</a> with us
+				<hr>
+				<a href="{% url 'reset1' %}">forgot password?</a>
+
+		</div>
+			<div class="col-md-2 col-sm-0 xsm-1 "></div>
+</div>
+
+</div>
+{% endblock %}

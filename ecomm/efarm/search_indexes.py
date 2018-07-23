@@ -5,7 +5,6 @@ from .models import Product
 class ProductIndex(indexes.SearchIndex,indexes.Indexable):
     text =indexes.CharField(document=True ,use_template=True, template_name="search/indexes/search/product_search.txt")
     name =indexes.NgramField(model_attr='name')
-    description = indexes.CharField(model_attr='description')
 
     content_auto = indexes.NgramField(model_attr='name')
 

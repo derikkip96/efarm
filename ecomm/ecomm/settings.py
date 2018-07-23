@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'payment',
     'haystack',
     'whoosh',
+    'cabook',
+    'book',
 
 ]
 
@@ -84,18 +86,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
-                #    social authentication
-                # 'social.apps.django_app.context_processors.backends',
-                # 'social.apps.django_app.context_processors.login_redirect'
             ],
         },
     },
 ]
-AUTHENTICATION_BACKENDS = (
-    # 'social.backends.facebook.FacebookOAuth2',
-    # 'social.backends.google.GoogleOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-)
+
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 WHOOSH_INDEX=os.path.join(BASE_DIR,'whoosh/')
@@ -153,9 +148,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
 CART_SESSION_ID='cart'
+BOOK_SESSION_ID='book'
 
 STATIC_URL = '/static/'
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
@@ -186,8 +180,3 @@ EMAIL_USE_TLS = True
 
 PAYPAL_RECEIVER_EMAIL = 'dekiprotich@gmail.com'
 PAYPAL_TEST = True
-
-# fb auth
-SOCIAL_AUTH_FACEBOOK_KEY = '878360889015121'
-SOCIAL_AUTH_FACEBOOK_SECRET = '2400e5debdbce503e8956798b4a9a225'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']

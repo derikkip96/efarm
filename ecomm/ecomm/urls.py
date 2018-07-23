@@ -29,7 +29,9 @@ urlpatterns = [
     path(r'account/', include('account.urls')),
     path(r'forum/',include('forum.urls')),
     path(r'hire/',include('hire.urls')),
-    path(r'efarm/', include('efarm.urls')),
+    path(r'', include('efarm.urls')),
+    path(r'cabook/',include('cabook.urls')),
+    path(r'book/',include('book.urls')),
     path(r'search/', include('haystack.urls')),
     # path('', include('social.apps.django_app.urls', namespace='social')),
 

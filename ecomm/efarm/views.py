@@ -12,12 +12,11 @@ def product_list(request ,category_slug=None):
 	storage =messages.get_messages(request)
 	category = None
 	categories= Category.objects.all()
-	products=Product.objects.filter(available=True)
 	# adding up shopping cart form
 	cart_form=shoping()
 	# adding pagination to product list
-	prod_list=Product.objects.all()
-	paginator =Paginator(prod_list,50)
+	prod_list=Product.objects.filter(available=True)
+	paginator =Paginator(prod_list,20)
 	page = request.GET.get('page')
 	try:
 		products= paginator.page(page)
@@ -25,6 +24,7 @@ def product_list(request ,category_slug=None):
 		products = paginator.page(1)
 	except EmptyPage:
 		products = paginator.page(paginator.num_pages)
+		#end of pagination
 	if category_slug:
 		category = get_object_or_404(Category, slug=category_slug)
 		products = Product.objects.filter( category=category )

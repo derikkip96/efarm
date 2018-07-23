@@ -1,0 +1,28 @@
+{% extends 'shop/base.html' %}
+{% block title %}book form{% endblock %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    .form-control{
+width:400px;
+}
+.conte{
+
+		border-radius:5px;
+        padding:20px 20px 20px 80px;
+        background-color:white;
+}
+</style>
+<h2><b>place your book in the form below</b> <hr></h2>
+<div class="conte container">
+<form action="." method="post">
+    {% csrf_token %}
+    {{b_form|crispy}}
+    <br>
+     <p><input type="submit" value="Place a book" id="orderButton"></p>
+
+</form>
+</div>
+{% endblock %}
